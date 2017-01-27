@@ -4,6 +4,7 @@
 
 @media all {
   body {
+    font-family: sans-serif;
     display: flex;
     flex-direction: column;
     background-color: $body_bg_color;
@@ -16,9 +17,19 @@
   }
 
   #content {
-    width: 600px;
-    height: 200px;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 700px;
+    height: 100px;
     background-color: gainsboro;
+    font-size: 2em;
     @include border-radius(20px);
+
+    p {
+      margin: 0;
+      padding: 0;
+    }
   }
 }

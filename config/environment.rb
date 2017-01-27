@@ -31,7 +31,7 @@ configure :production do
   puts "******************"
 
   # Use Postgresql
-  DataMapper.setup(:default, ENV['DATABASE_URL'] || "postgres://rgbcdcilyjwlwk:65ab5f749f3f47c5c98c54c8c006060bf0f5ad4425e05c094de23fc59e128fb1@ec2-54-163-233-89.compute-1.amazonaws.com/d6d4gm7ess63k9")
+  DataMapper.setup(:default, ENV['DATABASE_URL'] || "postgres://fnkusucuathyqa:8cd7376f69b94fec5ebf676238f0a1f27962f2a8e88cc67672f7b3fd18dfc0dc@ec2-54-83-194-208.compute-1.amazonaws.com:5432/d8gr9qh51h9nku")
 
 
 end
