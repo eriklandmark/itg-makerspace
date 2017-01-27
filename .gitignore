@@ -1,11 +1,8 @@
 # Created by .ignore support plugin (hsz.mobi)
-.env
-.idea/**
+
+.idea/
 db/*.sqlite
-test_server.rb
-db.rb
-/public/db-bilder/*
-/public/db-video/*
-/db/files/dokument/*
 .sass-cache
-koala-config.json
+config.rb
+db/
+itg-makerspace.iml

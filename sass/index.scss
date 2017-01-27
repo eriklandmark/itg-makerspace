@@ -1,0 +1,24 @@
+@import "partials/variables";
+@import "compass";
+@import "compass/css3";
+
+@media all {
+  body {
+    display: flex;
+    flex-direction: column;
+    background-color: $body_bg_color;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+  }
+
+  #content {
+    width: 600px;
+    height: 200px;
+    background-color: gainsboro;
+    @include border-radius(20px);
+  }
+}
