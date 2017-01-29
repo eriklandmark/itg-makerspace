@@ -1,7 +1,8 @@
-/**
- * Created by eriklandmark on 2017-01-27.
- */
-window.addEventListener("mousemove", movepictures, false);
+/** Created by eriklandmark on 2017-01-27. */
+if (window.matchMedia("(min-width: 737px)and (min-device-width: 737px)and (-webkit-min-device-pixel-ratio: 1)").matches) {
+    console.log("Is Desktop..");
+    window.addEventListener("mousemove", movepictures, false);
+}
 window.addEventListener("load", function () {
     var deadline = 'Februari 1 2017 15:00:00 GMT+0100';
     initializeClock('tid_till_nästa_möte', deadline);
@@ -22,10 +23,10 @@ function initializeClock(id, endtime) {
     var clock = document.getElementById(id);
     var timeinterval = setInterval(function () {
         var t = getTimeRemaining(endtime);
-        clock.innerHTML = 'Det är ' + t.days + ' dag(ar), ' +
+        clock.innerHTML = 'om ' + t.days + ' dag(ar), ' +
             t.hours + ' timmar, ' +
             t.minutes + ' minuter och ' +
-            t.seconds + " sekunder kvar till nästa möte!";
+            t.seconds + " sekunder.";
         if (t.total <= 0) {
             clearInterval(timeinterval);
         }

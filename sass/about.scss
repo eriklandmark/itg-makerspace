@@ -4,20 +4,63 @@
 @import 'compass';
 @import 'compass/css3';
 
-@media all {
+@media only screen
+and (max-device-width: 736px)
+and (-webkit-min-device-pixel-ratio: 2)
+and (orientation: portrait) {
+  @include nav_bar(portrait);
+  @include footer(portrait, true);
   body {
     padding: 0;
     margin: 0;
     background-color: $body_bg_color;
   }
 
-  @include nav_bar;
+  #content {
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    margin-top: 250px;
+    padding: 40px;
+  }
+}
+
+/* Landscape */
+@media only screen
+and (max-device-width: 736px)
+and (-webkit-min-device-pixel-ratio: 2)
+and (orientation: landscape) {
+  @include nav_bar(landscape);
+  @include footer(landscape, true);
+
+  body {
+    padding: 0;
+    margin: 0;
+    background-color: $body_bg_color;
+  }
+
+  #content {
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    margin-top: 100px;
+    padding: 20px;
+  }
+}
+
+/* ----------- Non-Retina Screens ----------- */
+@media screen
+and (min-device-width: 736px)
+and (-webkit-min-device-pixel-ratio: 1) {
+  @include nav_bar(desktop);
+  @include footer(desktop, true);
+  body {
+    padding: 0;
+    margin: 0;
+    background-color: $body_bg_color;
+  }
 
   #content {
     text-align: center;
     font-family: 'Open Sans', sans-serif;
     margin-top: 100px;
   }
-
-  @include footer(true);
 }

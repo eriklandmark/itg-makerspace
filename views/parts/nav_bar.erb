@@ -1,20 +1,48 @@
 <nav>
-    <a href="/">
-        <img src="/icons/home_icon.svg" alt="Home">
-    </a>
-    <a href="/projects">
-        <div id="menu_project">
-            <p>PROJEKT</p>
+    <div id="desktop_menu">
+        <a href="/">
+            <img src="/icons/home_icon.svg" alt="Home" id="home_button">
+        </a>
+        <a href="/projects">
+            <div id="menu_project">
+                <p>PROJEKT</p>
+            </div>
+        </a>
+        <a href="/about-us">
+            <div id="menu_about">
+                <p>OM OSS</p>
+            </div>
+        </a>
+        <a href="/shoping-cart">
+            <div id="menu_shoping_cart">
+                <p>INKÖPSLISTA</p>
+            </div>
+        </a>
+    </div>
+
+    <div id="mobile_menu">
+        <div id="menu_left">
+            <img src="/icons/home_icon.svg" alt="Home" id="home_button" onclick="menu_click('')">
         </div>
-    </a>
-    <a href="/about-us">
-        <div id="menu_about">
-            <p>OM OSS</p>
+        <div id="menu_middle">
+            <p id="page_title"></p>
         </div>
-    </a>
-    <a href="/shoping-cart">
-        <div id="menu_shoping_cart">
+        <div id="menu_right">
+            <img src="/icons/menu_icon.svg" alt="Menu" id="menu_button" onclick="openMenu()">
+        </div>
+
+    </div>
+    <div id="drop_down_menu">
+        <div id="drop_menu_project" onclick="menu_click('shoping-cart')">
             <p>INKÖPSLISTA</p>
         </div>
-    </a>
+        <div id="drop_menu_about" onclick="menu_click('about-us')">
+            <p>OM OSS</p>
+        </div>
+        <div id="drop_menu_shoping_cart" onclick="menu_click('projects')">
+            <p>PROJEKT</p>
+        </div>
+    </div>
+
+    <script src="/js/nav_bar.js" type="text/javascript" charset="utf-8"></script>
 </nav>

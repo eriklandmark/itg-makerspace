@@ -1,70 +1,282 @@
-@mixin nav_bar() {
-  nav {
-    font-family: 'Open Sans', sans-serif;
-    position: fixed;
-    left: 0;
-    top: 0;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    height: 80px;
-    width: 100%;
-    z-index: 20;
-    @include linear-gradient(180, #001931, transparent);
+@mixin nav_bar($device) {
+  @if $device == desktop {
 
-    a {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      text-decoration: none;
-      height: 100%;
-      margin: 0 20px 0 20px;
+    #mobile_menu, #drop_down_menu {
+      display: none;
     }
 
-    img {
-      height: 50%;
+    #desktop_menu {
+      font-family: 'Open Sans', sans-serif;
+      position: fixed;
+      left: 0;
+      top: 0;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      height: 80px;
+      width: 100%;
+      z-index: 20;
+      @include linear-gradient(180, #001931, transparent);
 
-      &:hover {
-        cursor: pointer;
+      a {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-decoration: none;
+        height: 100%;
+        margin: 0 20px 0 20px;
+      }
+
+      img {
+        height: 50%;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+
+      #menu_project, #menu_about, #menu_shoping_cart {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        color: white;
+        padding: 0 20px 0 20px;
+        height: 100%;
+
+        &:hover {
+          background-color: #001931;
+          cursor: pointer;
+          @include border-bottom-left-radius(20px);
+          @include border-bottom-right-radius(20px);
+        }
+      }
+    }
+  } @else if $device == portrait {
+
+    #desktop_menu {
+      display: none;
+    }
+    #mobile_menu {
+      position: fixed;
+      left: 0;
+      top: 0;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      height: 190px;
+      width: 100%;
+      z-index: 100;
+      @include linear-gradient(180, #001931, transparent);
+
+      #menu_left, #menu_middle, #menu_right {
+        flex-grow: 1;
+        display: flex;
+        max-height: 140px;
+        z-index: 100;
+      }
+
+      #menu_left {
+        flex-direction: row;
+
+        img {
+          width: 40%;
+          margin: 30px 0 0 40px;
+        }
+      }
+
+      #menu_middle {
+        flex-direction: row;
+        justify-content: center;
+
+        p {
+          font-family: 'Open Sans', sans-serif;
+          color: white;
+          font-size: 3rem;
+        }
+      }
+
+      #menu_right {
+        flex-direction: row-reverse;
+
+        img {
+          width: 40%;
+          margin: 40px 50px 0 0;
+        }
       }
     }
 
-    #menu_project, #menu_about, #menu_shoping_cart {
+    #drop_down_menu {
+      position: fixed;
+      left: 0;
+      top: -550px;
       display: flex;
-      flex-direction: column;
-      justify-content: center;
-      color: white;
-      padding: 0 20px 0 20px;
-      height: 100%;
+      flex-direction: column-reverse;
+      width: 100%;
+      height: 550px;
+      z-index: 15;
+      background-color: #001931;
 
-      &:hover {
-        background-color: #001931;
-        cursor: pointer;
-        @include border-bottom-left-radius(20px);
-        @include border-bottom-right-radius(20px);
+      #drop_menu_project, #drop_menu_about, #drop_menu_shoping_cart {
+        display: flex;
+        flex-direction: row;
+        height: 120px;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.5rem;
+
+        p {
+          font-family: 'Open Sans', sans-serif;
+          color: white;
+        }
+      }
+    }
+  } @else if ($device == landscape) {
+
+    #desktop_menu {
+      display: none;
+    }
+
+    #mobile_menu {
+      position: fixed;
+      left: 0;
+      top: 0;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      height: 120px;
+      width: 100%;
+      z-index: 20;
+      @include linear-gradient(180, #001931, transparent);
+
+      #menu_left, #menu_middle, #menu_right {
+        flex-grow: 1;
+        display: flex;
+        max-height: 120px;
+      }
+
+      #menu_left {
+        flex-direction: row;
+
+        img {
+          width: 25%;
+          margin: 30px 0 0 30px;
+        }
+      }
+
+      #menu_middle {
+        flex-direction: row;
+        justify-content: center;
+
+        p {
+          font-family: 'Open Sans', sans-serif;
+          color: white;
+          font-size: 2rem;
+        }
+      }
+
+      #menu_right {
+        flex-direction: row-reverse;
+
+        img {
+          width: 25%;
+          margin: 40px 40px 0 0;
+        }
+      }
+    }
+
+    #drop_down_menu {
+      position: fixed;
+      left: 0;
+      top: -500px;
+      display: flex;
+      flex-direction: column-reverse;
+      width: 100%;
+      height: 500px;
+      z-index: 15;
+      background-color: #001931;
+
+      #drop_menu_project, #drop_menu_about, #drop_menu_shoping_cart {
+        display: flex;
+        flex-direction: row;
+        height: 100px;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+
+        p {
+          font-family: 'Open Sans', sans-serif;
+          color: white;
+        }
       }
     }
   }
 }
 
-@mixin footer($fixed) {
-  footer {
-    @if ($fixed == true) {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-    }
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    background-color: #112437;
-    height: 80px;
+@mixin footer($device, $fixed) {
+  @if $device == portrait {
+    footer {
+      @if ($fixed == true) {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+      }
 
-    p {
-      color: white;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      background-color: #112437;
+      height: 140px;
+      font-size: 1.4rem;
+
+      p {
+        color: white;
+      }
+    }
+  } @else if $device == landscape {
+    footer {
+      @if ($fixed == true) {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+      }
+
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      background-color: #112437;
+      height: 100px;
+      font-size: 1.4rem;
+
+      p {
+        color: white;
+      }
+    }
+  } @else if $device == desktop {
+    footer {
+      @if ($fixed == true) {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+      }
+
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      background-color: #112437;
+      height: 80px;
+
+      p {
+        color: white;
+      }
     }
   }
 }
