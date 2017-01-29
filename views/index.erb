@@ -9,28 +9,27 @@
     </head>
 
     <body>
-        <nav>
-            <div id="menu_project">
-                <p>Projekt</p>
-            </div>
-            <div id="menu_about">
-                <p>Om oss</p>
-            </div>
-        </nav>
+        <%=erb :'parts/nav_bar'%>
+
         <div id="front">
             <div id="content"></div>
             <h2 id="title">Välkomna!</h2>
             <p> Välkommen till Itg Makerspace! </p>
-
             <img src="/images/raspberry-pi.png" alt="Raspberry pi" id="pi_logo" class="parralax">
             <img src="/images/arduino-logo.png" alt="Arduino Logo" id="arduino_logo" class="parralax">
             <img src="/images/itg-logo.png" alt="ITG Logo" id="itg_logo" class="parralax">
             <img src="/images/3dprinter.png" alt="3D Printer" id="printer" class="parralax">
-
             <div id="gradient"></div>
         </div>
         <div id="info">
             <h1>IT Gymnasiet Göteborg Makerspace</h1>
+
+            <div id="div_nästa_möte">
+                <p>Nästa möte är: 1 Februari 2017, kl 15:00</p>
+                <p id="tid_till_nästa_möte"></p>
+            </div>
         </div>
+
+        <%=erb :'parts/footer'%>
     </body>
 </html>

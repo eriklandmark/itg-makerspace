@@ -1,9 +1,14 @@
 @import "partials/variables";
 @import "partials/mixins";
+@import "partials/parts";
 @import 'compass';
 @import 'compass/css3';
 
 @media all {
+
+  @include nav_bar;
+  @include footer(false);
+
   body {
     font-family: sans-serif;
     display: flex;
@@ -14,26 +19,6 @@
     padding: 0;
     margin: 0;
     @include linear-gradient(180, #001931, #C2454F);
-  }
-
-  nav {
-    position: fixed;
-    left: 0;
-    top: 0;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    height: 70px;
-    width: 100%;
-    z-index: 20;
-    //background-color: #001931;
-    @include linear-gradient(180, #001931, transparent);
-
-    #menu_project, #menu_about {
-      color: white;
-      margin: 0 30px 0 30px;
-    }
   }
 
   #front {
@@ -49,6 +34,14 @@
       font-family: 'Roboto', sans-serif;
       color: white;
       z-index: 10;
+      margin: 0;
+    }
+    h2 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: 2.67rem;
     }
   }
 
@@ -64,13 +57,12 @@
   #content {
     position: absolute;
     width: 700px;
-    height: 150px;
+    height: 170px;
     left: calc(50vw - 350px);
-    top: calc(50vh - 75px);
-    font-size: 2em;
-    border: solid white 10px;
-    @include border-radius(20px);
-    background-color: transparent;
+    top: calc(51vh - 85px);
+    @include border-radius(30px);
+    background-color: white;
+    @include opacity(0.4);
     z-index: 10;
     overflow: hidden;
   }
@@ -124,7 +116,7 @@
     }
 
     h1 {
-      margin: 40px;
+      margin: 80px;
       font-size: 2.67em;
     }
   }
