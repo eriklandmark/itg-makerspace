@@ -17,7 +17,7 @@
       height: 80px;
       width: 100%;
       z-index: 20;
-      @include linear-gradient(180, #001931, transparent);
+      @include linear-gradient(180, $dark_theme_color, transparent);
 
       a {
         display: flex;
@@ -45,7 +45,7 @@
         height: 100%;
 
         &:hover {
-          background-color: #001931;
+          background-color: $dark_theme_color;
           cursor: pointer;
           @include border-bottom-left-radius(20px);
           @include border-bottom-right-radius(20px);
@@ -68,7 +68,7 @@
       height: 190px;
       width: 100%;
       z-index: 100;
-      @include linear-gradient(180, #001931, transparent);
+      @include linear-gradient(180, $dark_theme_color, transparent);
 
       #menu_left, #menu_middle, #menu_right {
         flex-grow: 1;

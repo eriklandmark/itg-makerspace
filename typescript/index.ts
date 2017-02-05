@@ -6,7 +6,7 @@ if (window.matchMedia("(min-width: 737px)and (min-device-width: 737px)and (-webk
 }
 
 window.addEventListener("load", function () {
-    var deadline = 'Februari 1 2017 15:00:00 GMT+0100';
+    var deadline = 'Februari 8 2017 15:00:00 GMT+0100';
     initializeClock('tid_till_nästa_möte', deadline);
 });
 
