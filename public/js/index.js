@@ -1,18 +1,18 @@
 /** Created by eriklandmark on 2017-01-27. */
 if (window.matchMedia("(min-width: 737px)and (min-device-width: 737px)and (-webkit-min-device-pixel-ratio: 1)").matches) {
-    console.log("Is Desktop..");
     window.addEventListener("mousemove", movepictures, false);
 }
 window.addEventListener("load", function () {
     var deadline = 'Februari 8 2017 15:00:00 GMT+0100';
     initializeClock('tid_till_nästa_möte', deadline);
 });
+
 function movepictures(e) {
-    parralax(e, "content", 0.02);
-    parralax(e, "pi_logo", 0.05);
-    parralax(e, "arduino_logo", 0.09);
+    //parralax(e, "content", 0.02);
+    parralax(e, "arduino_logo", 0.13);
+    parralax(e, "pi_logo", 0.1);
     parralax(e, "itg_logo", 0.04);
-    parralax(e, "printer", 0.03);
+    parralax(e, "printer", 0.05);
 }
 function parralax(e, element, friction) {
     var posX = (e.clientX * -friction) / 2.0;

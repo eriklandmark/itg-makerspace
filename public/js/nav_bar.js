@@ -1,9 +1,11 @@
 /**
  * Created by erikl on 2017-01-29.
  */
+
 window.addEventListener("load", function () {
     document.getElementById("page_title").innerText = document.title.substr(document.title.indexOf(" - ") == -1 ? 0 : document.title.indexOf(" - ") + 3);
 });
+
 var opened = false;
 var interval = null;
 var elem = document.getElementById("drop_down_menu");

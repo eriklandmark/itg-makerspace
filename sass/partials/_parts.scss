@@ -16,7 +16,7 @@
       align-items: center;
       height: 80px;
       width: 100%;
-      z-index: 20;
+      z-index: 100;
       @include linear-gradient(180, $dark_theme_color, transparent);
 
       a {
@@ -43,6 +43,10 @@
         color: white;
         padding: 0 20px 0 20px;
         height: 100%;
+
+        p {
+          color: white;
+        }
 
         &:hover {
           background-color: $dark_theme_color;

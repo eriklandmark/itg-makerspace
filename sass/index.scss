@@ -33,7 +33,7 @@ and (orientation: portrait) {
     overflow: hidden;
 
     p, h2 {
-      font-family: 'Roboto', sans-serif;
+      font-family: 'Open Sans', sans-serif;
       color: white;
       z-index: 10;
       margin: 0;
@@ -255,6 +255,10 @@ and (-webkit-min-device-pixel-ratio: 1) {
   @include nav_bar(desktop);
   @include footer(desktop, false);
 
+  html {
+
+  }
+
   body {
     font-family: sans-serif;
     display: flex;
@@ -264,7 +268,32 @@ and (-webkit-min-device-pixel-ratio: 1) {
     width: 100%;
     padding: 0;
     margin: 0;
-    @include linear-gradient(180, $dark_theme_color, $light_theme_color);
+    //@include linear-gradient(180, $dark_theme_color, $light_theme_color);
+    background: url("/images/bg.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-color: $body_bg_color;
+  }
+
+  #bg {
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+      min-width: 50%;
+      min-height: 50%;
+    }
   }
 
   #front {
@@ -279,7 +308,7 @@ and (-webkit-min-device-pixel-ratio: 1) {
     p, h2 {
       font-family: 'Roboto', sans-serif;
       color: white;
-      z-index: 10;
+      z-index: 11;
       margin: 0;
     }
     h2 {
@@ -296,8 +325,8 @@ and (-webkit-min-device-pixel-ratio: 1) {
     width: 100%;
     height: 100vh;
     @include linear-gradient(180, $dark_theme_color, $light_theme_color);
-    z-index: 2;
-    @include opacity(0.7);
+    z-index: 10;
+    @include opacity(0.5);
   }
 
   #content {
@@ -309,7 +338,7 @@ and (-webkit-min-device-pixel-ratio: 1) {
     @include border-radius(30px);
     background-color: white;
     @include opacity(0.4);
-    z-index: 10;
+    z-index: 11;
     overflow: hidden;
   }
 
@@ -318,6 +347,7 @@ and (-webkit-min-device-pixel-ratio: 1) {
     width: 25%;
     left: 60vw;
     top: 50vh;
+    z-index: 5;
   }
 
   #arduino_logo {
@@ -329,17 +359,17 @@ and (-webkit-min-device-pixel-ratio: 1) {
 
   #itg_logo {
     position: absolute;
-    left: 20vw;
-    top: 70vh;
-    width: 20%;
+    left: 10vw;
+    top: 55vh;
+    width: 40%;
     z-index: 8;
   }
 
   #printer {
     position: absolute;
-    left: 60vw;
+    left: 45vw;
     top: 10vh;
-    width: 30%;
+    width: 50%;
   }
 
   .parralax {
@@ -354,7 +384,7 @@ and (-webkit-min-device-pixel-ratio: 1) {
     width: 100%;
     height: 100vh;
     background-color: $light_theme_color;
-    z-index: 2;
+    z-index: 20;
 
     p {
       color: $paragraph_color;
