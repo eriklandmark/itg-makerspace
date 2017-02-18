@@ -1,4 +1,4 @@
-rerun --ignore "*.{slim,js,css,coffee}" "rackup --host 0.0.0.0"
+rerun --ignore "*.{slim,js,css,coffee,scss}" "rackup --host 0.0.0.0"
 
 tsc typescript/*.ts --watch -outDir "../public/js"
 

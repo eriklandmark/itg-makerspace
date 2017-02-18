@@ -5,53 +5,56 @@
         <title>ITG Makerspace</title>
         <script src="/js/parallax.js"></script>
         <script src="/js/index.js"></script>
+        <script src="/js/flying_objects_animation.js" type="application/javascript" ></script>
         <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="/css/index.css">
     </head>
 
     <body>
-
-        <%=erb :'parts/nav_bar'%>
-        <div id="front">
-            <div id="content"><h2>Välkomna!</h2>
-                <p>Välkommen till Itg Makerspace</p>
-            </div>
-
-            <img src="/images/hammer.png" alt="" id="hammer">
-
-            <ul id="parallax" style="width: 100%; height: 100%">
-                <li class="layer" data-depth="0.30">
-                    <img src="/images/arduino-board.png" alt="Arduino" id="arduino_board">
-                </li>
-                <li class="layer" data-depth="0.80">
-                    <img src="/images/raspberry-pi.png" alt="Raspberry pi" id="pi_logo">
-                </li>
-                <li class="layer" data-depth="0.40">
-                    <img src="/images/itg-logo.png" alt="ITG Logo" id="itg_logo">
-                </li>
-                <li class="layer" data-depth="0.60">
-                    <img src="/images/arduino-logo.png" alt="Arduino Logo" id="arduino_logo">
-                </li>
-                <li class="layer" data-depth="0.20">
-                    <img src="/images/3dprinter.png" alt="3D Printer" id="printer">
-                </li>
-            </ul>
-            <script>
-                var scene = document.getElementById('parallax');
-                var parallax = new Parallax(scene);
-            </script>
-
-            <div id="gradient"></div>
-        </div>
-        <div id="info">
-            <h1>IT Gymnasiet Göteborg Makerspace</h1>
-
-            <div id="div_nästa_möte">
-                <p>Nästa möte är: 23 Februari 2017, kl 15:00</p>
-                <p id="tid_till_nästa_möte"></p>
-            </div>
+    <%=erb :'parts/nav_bar'%>
+    <div id="front">
+        <div id="content"><h2>Välkomna!</h2>
+            <p>Välkommen till Itg Makerspace</p>
         </div>
 
-        <%=erb :'parts/footer'%>
+        <div id="animations">
+            <img src="/images/hammer.png" alt="Hammer" id="hammer" class="animation">
+            <img src="/images/nails.png" alt="Nails" id="nails" class="animation">
+        </div>
+
+        <ul id="parallax">
+            <li class="layer" data-depth="0.20">
+                <img src="/images/3dprinter.png" alt="3D Printer" id="printer" class="parallax_img">
+            </li>
+            <li class="layer" data-depth="0.30">
+                <img src="/images/arduino-board.png" alt="Arduino" id="arduino_board" class="parallax_img">
+            </li>
+            <li class="layer" data-depth="0.80">
+                <img src="/images/raspberry-pi.png" alt="Raspberry pi" id="pi_logo" class="parallax_img">
+            </li>
+            <li class="layer" data-depth="0.40">
+                <img src="/images/itg-logo.png" alt="ITG Logo" id="itg_logo" class="parallax_img">
+            </li>
+            <li class="layer" data-depth="0.60">
+                <img src="/images/arduino-logo.png" alt="Arduino Logo" id="arduino_logo" class="parallax_img">
+            </li>
+        </ul>
+        <script>
+            var scene = document.getElementById('parallax');
+            var parallax = new Parallax(scene);
+        </script>
+
+        <div id="gradient"></div>
+    </div>
+    <div id="info">
+        <h1>IT Gymnasiet Göteborg Makerspace</h1>
+
+        <div id="div_nästa_möte">
+            <p>Nästa möte är: 23 Februari 2017, kl 15:00</p>
+            <p id="tid_till_nästa_möte"></p>
+        </div>
+    </div>
+
+    <%=erb :'parts/footer'%>
     </body>
 </html>

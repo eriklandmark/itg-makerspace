@@ -31,6 +31,11 @@
       img {
         height: 50%;
 
+        -webkit-user-drag: none;
+        pointer-events: none;
+        -webkit-user-select: none;
+        user-select: none;
+
         &:hover {
           cursor: pointer;
         }

@@ -4,253 +4,9 @@
 @import 'compass';
 @import 'compass/css3';
 
-/* Portrait */
-@media only screen
-and (max-device-width: 736px)
-and (-webkit-min-device-pixel-ratio: 2)
-and (orientation: portrait) {
-  @include nav_bar(portrait);
-  @include footer(portrait, false);
-
-  body {
-    font-family: sans-serif;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    padding: 0;
-    margin: 0;
-    @include linear-gradient(180, $dark_theme_color, $light_theme_color);
-  }
-
-  #front {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-
-    p, h2 {
-      font-family: 'Open Sans', sans-serif;
-      color: white;
-      z-index: 10;
-      margin: 0;
-    }
-    h2 {
-      font-size: 4.5rem;
-      margin: 30px;
-    }
-    p {
-      font-size: 3.2rem;
-    }
-  }
-
-  #gradient {
-    position: absolute;
-    width: 100%;
-    height: 100vh;
-    @include linear-gradient(180, $dark_theme_color, $light_theme_color);
-    z-index: 2;
-    @include opacity(0.7);
-  }
-
-  #content {
-    position: absolute;
-    width: 800px;
-    height: 250px;
-    left: calc(50vw - 400px);
-    top: calc(51vh - 125px);
-    @include border-radius(30px);
-    background-color: white;
-    @include opacity(0.4);
-    z-index: 10;
-    overflow: hidden;
-  }
-
-  #pi_logo {
-    position: absolute;
-    width: 45%;
-    left: 50vw;
-    top: 50vh;
-  }
-
-  #arduino_logo {
-    position: absolute;
-    left: 12vw;
-    top: 25vh;
-    width: 40%;
-  }
-
-  #itg_logo {
-    position: absolute;
-    left: 15vw;
-    top: 78vh;
-    width: 40%;
-    z-index: 8;
-  }
-
-  #printer {
-    position: absolute;
-    left: 55vw;
-    top: 15vh;
-    width: 40%;
-  }
-
-  .parralax {
-    transition: transform 100ms;
-    overflow: hidden;
-  }
-
-  #info {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    height: 100vh;
-    background-color: $light_theme_color;
-    z-index: 2;
-
-    p, h1, h2, h3, h4 {
-      color: $text_color;
-      font-family: 'Open Sans', sans-serif;
-    }
-
-    p {
-      font-size: 2em;
-    }
-
-    h1 {
-      margin: 40px 0 60px 0;
-      font-size: 3em;
-    }
-  }
-}
-
-/* Landscape */
-@media only screen
-and (max-device-width: 736px)
-and (-webkit-min-device-pixel-ratio: 2)
-and (orientation: landscape) {
-  @include nav_bar(landscape);
-  @include footer(landscape, false);
-
-  body {
-    font-family: sans-serif;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    padding: 0;
-    margin: 0;
-    @include linear-gradient(180, $dark_theme_color, $light_theme_color);
-  }
-
-  #front {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-
-    p, h2 {
-      font-family: 'Roboto', sans-serif;
-      color: white;
-      z-index: 10;
-      margin: 0;
-    }
-    h2 {
-      font-size: 3rem;
-      margin-bottom: 10px;
-    }
-    p {
-      font-size: 2.67rem;
-    }
-  }
-
-  #gradient {
-    position: absolute;
-    width: 100%;
-    height: 100vh;
-    @include linear-gradient(180, $dark_theme_color, $light_theme_color);
-    z-index: 2;
-    @include opacity(0.7);
-  }
-
-  #content {
-    position: absolute;
-    width: 700px;
-    height: 170px;
-    left: calc(50vw - 350px);
-    top: calc(51vh - 85px);
-    @include border-radius(30px);
-    background-color: white;
-    @include opacity(0.4);
-    z-index: 10;
-    overflow: hidden;
-  }
-
-  #pi_logo {
-    position: absolute;
-    width: 20%;
-    left: 60vw;
-    top: 55vh;
-  }
-
-  #arduino_logo {
-    position: absolute;
-    left: 12vw;
-    top: 25vh;
-    width: 20%;
-  }
-
-  #itg_logo {
-    position: absolute;
-    left: 15vw;
-    top: 58vh;
-    width: 30%;
-    z-index: 8;
-  }
-
-  #printer {
-    position: absolute;
-    left: 60vw;
-    top: 15vh;
-    width: 30%;
-  }
-
-  .parralax {
-    transition: transform 100ms;
-    overflow: hidden;
-  }
-
-  #info {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    height: 100vh;
-    background-color: $light_theme_color;
-    z-index: 2;
-
-    p, h1, h2, h3, h4 {
-      color: $text_color;
-      font-family: 'Open Sans', sans-serif;
-    }
-
-    h1 {
-      margin: 80px;
-      font-size: 2.67em;
-    }
-  }
-}
-
-/* ----------- Non-Retina Screens ----------- */
+/* ----------- Desktop Screens ----------- */
 @media screen
-and (min-device-width: 736px) {
+and (min-device-width: $max_mobile_screen_size) {
   @include nav_bar(desktop);
   @include footer(desktop, false);
 
@@ -273,25 +29,6 @@ and (min-device-width: 736px) {
     -o-background-size: cover;
     background-size: cover;
     overflow-x: hidden;
-  }
-
-  #bg {
-    position: fixed;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-
-    img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      margin: auto;
-      min-width: 50%;
-      min-height: 50%;
-    }
   }
 
   #front {
@@ -340,72 +77,108 @@ and (min-device-width: 736px) {
       }
     }
 
-    #hammer {
+    #animations {
       position: absolute;
-      z-index: 10;
-      width: 10%;
-      top: 20vh;
-      left: -500px;
-      -webkit-animation:spin 5s linear infinite;
-      -moz-animation:spin 5s linear infinite;
-      animation:spin 5s linear infinite;
-      overflow: hidden;
-    }
+      top: 0;
+      left: 0;
+      max-width: 100vw;
+      width: 100%;
+      height: 100%;
+      overflow-x: hidden;
 
-    @-moz-keyframes spin {
-      100% {
-        -moz-transform: rotate(360deg);
+      .animation {
+        -webkit-user-drag: none;
+        pointer-events: none;
+        -webkit-user-select: none;
+        user-select: none;
       }
-    }
-    @-webkit-keyframes spin {
-      100% {
-        -webkit-transform: rotate(360deg);
+
+      #hammer {
+        position: absolute;
+        z-index: 10;
+        width: 10%;
+        top: 20vh;
+        left: -500px;
+        -webkit-animation:spin 5s linear infinite;
+        -moz-animation:spin 5s linear infinite;
+        animation:spin 5s linear infinite;
+        overflow: hidden;
       }
-    }
-    @keyframes spin {
-      100% {
-        -webkit-transform: rotate(360deg); transform:rotate(360deg);
+
+      #nails {
+        position: absolute;
+        z-index: 10;
+        width: 10%;
+        top: 20vh;
+        left: -500px;
+        -webkit-animation:spin 5s linear infinite;
+        -moz-animation:spin 5s linear infinite;
+        animation:spin 5s linear infinite;
+        overflow: hidden;
+      }
+
+      @-moz-keyframes spin {
+        100% {
+          -moz-transform: rotate(360deg);
+        }
+      }
+      @-webkit-keyframes spin {
+        100% {
+          -webkit-transform: rotate(360deg);
+        }
+      }
+      @keyframes spin {
+        100% {
+          -webkit-transform: rotate(360deg); transform:rotate(360deg);
+        }
       }
     }
 
     #parallax {
       width: 100%;
-      height: 100%
-    }
+      height: 100%;
 
-    #arduino_board {
-      position: relative;
-      top: 60vh;
-      left: 30vw;
-      width: 30%;
-    }
+      .parallax_img {
+        -webkit-user-drag: none;
+        pointer-events: none;
+        -webkit-user-select: none;
+        user-select: none;
+      }
 
-    #pi_logo {
-      position: relative;
-      top: 65vh;
-      left: 70vw;
-      width: 30%;
-    }
+      #arduino_board {
+        position: relative;
+        top: 65vh;
+        left: 40vw;
+        width: 60%;
+      }
 
-    #arduino_logo {
-      position: relative;
-      top: 10vh;
-      left: 20vw;
-      width: 30%;
-    }
+      #pi_logo {
+        position: relative;
+        top: 65vh;
+        left: 70vw;
+        width: 30%;
+      }
 
-    #itg_logo {
-      position: relative;
-      top: 60vh;
-      left: 10vw;
-      width: 80%;
-    }
+      #arduino_logo {
+        position: relative;
+        top: 10vh;
+        left: 20vw;
+        width: 30%;
+      }
 
-    #printer {
-      position: relative;
-      top: 10vh;
-      left: 50vw;
-      width: 50%;
+      #itg_logo {
+        position: relative;
+        top: 60vh;
+        left: 10vw;
+        width: 80%;
+      }
+
+      #printer {
+        position: relative;
+        top: 10vh;
+        left: 50vw;
+        width: 50%;
+      }
     }
   }
 
@@ -424,6 +197,361 @@ and (min-device-width: 736px) {
     }
 
     h1, h2, h3, h4 {
+      color: $text_color;
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    h1 {
+      margin: 80px;
+      font-size: 2.67em;
+    }
+  }
+}
+
+/* Portrait */
+@media only screen
+and (max-device-width: $max_mobile_screen_size)
+and (orientation: portrait) {
+  @include nav_bar(portrait);
+  @include footer(portrait, false);
+
+  body {
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    background: url("/images/bg.jpg") no-repeat center center fixed $dark_theme_color;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+
+  #front {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
+    #gradient {
+      display: none;
+      position: absolute;
+      width: 100%;
+      height: 100vh;
+      @include linear-gradient(180, $dark_theme_color, $light_theme_color);
+      z-index: 2;
+      @include opacity(0.7);
+    }
+
+    #content {
+      position: absolute;
+      width: 800px;
+      height: 250px;
+      left: calc(50vw - 400px);
+      top: calc(51vh - 125px);
+      @include border-radius(30px);
+      background-color: rgba(0,0,0,0.5);
+      z-index: 11;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      p, h2 {
+        font-family: 'Open Sans', sans-serif;
+        color: white;
+        z-index: 10;
+        margin: 0;
+      }
+      h2 {
+        font-size: 4.5rem;
+        margin: 30px;
+      }
+      p {
+        font-size: 3.2rem;
+      }
+    }
+
+    #animations {
+      position: absolute;
+      top: 0;
+      left: 0;
+      max-width: 100vw;
+      width: 100%;
+      height: 100%;
+      overflow-x: hidden;
+
+      #hammer {
+        position: relative;
+        z-index: 10;
+        width: 15%;
+        top: 20vh;
+        left: -500px;
+        -webkit-animation:spin 5s linear infinite;
+        -moz-animation:spin 5s linear infinite;
+        animation:spin 5s linear infinite;
+        overflow: hidden;
+      }
+
+      @-moz-keyframes spin {
+        100% {
+          -moz-transform: rotate(360deg);
+        }
+      }
+      @-webkit-keyframes spin {
+        100% {
+          -webkit-transform: rotate(360deg);
+        }
+      }
+      @keyframes spin {
+        100% {
+          -webkit-transform: rotate(360deg); transform:rotate(360deg);
+        }
+      }
+    }
+
+    #parallax {
+      width: 100%;
+      height: 100%
+    }
+
+    #arduino_board {
+      position: relative;
+      top: 60vh;
+      left: 50vw;
+      width: 100%;
+    }
+
+
+    #pi_logo {
+      position: relative;
+      width: 45%;
+      left: 20vw;
+      top: 60vh;
+    }
+
+    #arduino_logo {
+      position: relative;
+      left: 12vw;
+      top: 25vh;
+      width: 40%;
+    }
+
+    #itg_logo {
+      position: relative;
+      left: 10vw;
+      top: 78vh;
+      width: 90%;
+      z-index: 8;
+    }
+
+    #printer {
+      position: relative;
+      left: 40vw;
+      top: 20vh;
+      width: 65%;
+    }
+  }
+
+  #info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background-color: $light_theme_color;
+    z-index: 2;
+
+    p, h1, h2, h3, h4 {
+      color: $text_color;
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    p {
+      font-size: 2em;
+    }
+
+    h1 {
+      margin: 40px 0 60px 0;
+      font-size: 3em;
+    }
+  }
+}
+
+/* Landscape */
+@media only screen
+and (max-device-width: $max_mobile_screen_size)
+and (orientation: landscape) {
+  @include nav_bar(landscape);
+  @include footer(landscape, false);
+
+  body {
+    position: absolute;
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    padding: 0;
+    margin: 0;
+    background: url("/images/bg.jpg") no-repeat center center fixed $dark_theme_color;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+
+  #front {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden !important;
+
+    #gradient {
+      display:none;
+      position: absolute;
+      width: 100%;
+      height: 100vh;
+      @include linear-gradient(180, $dark_theme_color, $light_theme_color);
+      z-index: 2;
+      @include opacity(0.7);
+    }
+
+    #content {
+      position: absolute;
+      width: 700px;
+      height: 170px;
+      left: calc(50vw - 350px);
+      top: calc(51vh - 85px);
+      @include border-radius(30px);
+      background-color: rgba(0,0,0,0.5);
+      z-index: 11;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      p, h2 {
+        font-family: 'Roboto', sans-serif;
+        color: white;
+        z-index: 10;
+        margin: 0;
+      }
+      h2 {
+        font-size: 3rem;
+        margin-bottom: 10px;
+      }
+      p {
+        font-size: 2.67rem;
+      }
+    }
+
+    #animations {
+      .animation {
+        overflow-x: hidden;
+      }
+
+      position: absolute;
+      top: 0;
+      left: 0;
+      max-width: 100vw;
+      width: 100%;
+      height: 100%;
+      overflow-x: hidden;
+
+      #hammer {
+        position: relative;
+        z-index: 10;
+        width: 8%;
+        top: 20vh;
+        left: -500px;
+        -webkit-animation:spin 5s linear infinite;
+        -moz-animation:spin 5s linear infinite;
+        animation:spin 5s linear infinite;
+        overflow: hidden;
+      }
+
+      @-moz-keyframes spin {
+        100% {
+          -moz-transform: rotate(360deg);
+        }
+      }
+      @-webkit-keyframes spin {
+        100% {
+          -webkit-transform: rotate(360deg);
+        }
+      }
+      @keyframes spin {
+        100% {
+          -webkit-transform: rotate(360deg); transform:rotate(360deg);
+        }
+      }
+    }
+
+    #parallax {
+      width: 100%;
+      height: 100%
+    }
+
+    #arduino_board {
+      position: relative;
+      top: 65vh;
+      left: 40vw;
+      width: 40%;
+    }
+
+    #pi_logo {
+      position: relative;
+      width: 30%;
+      left: 70vw;
+      top: 55vh;
+      z-index: 8;
+    }
+
+    #arduino_logo {
+      position: relative;
+      left: 32vw;
+      top: 15vh;
+      width: 25%;
+    }
+
+    #itg_logo {
+      position: relative;
+      left: 10vw;
+      top: 40vh;
+      width: 70%;
+      z-index: 8;
+    }
+
+    #printer {
+      position: relative;
+      left: 55vw;
+      top: 10vh;
+      width: 45%;
+    }
+  }
+
+  #info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background-color: $light_theme_color;
+    z-index: 2;
+
+    p, h1, h2, h3, h4 {
       color: $text_color;
       font-family: 'Open Sans', sans-serif;
     }
