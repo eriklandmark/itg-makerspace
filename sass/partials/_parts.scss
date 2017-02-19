@@ -5,6 +5,10 @@
       display: none;
     }
 
+    #menu_dimmer {
+      display: none;
+    }
+
     #desktop_menu {
       font-family: 'Open Sans', sans-serif;
       position: fixed;
@@ -54,10 +58,11 @@
         }
 
         &:hover {
-          background-color: $dark_theme_color;
+          @include linear-gradient(180, $dark_theme_color, $light_theme_color);
           cursor: pointer;
           @include border-bottom-left-radius(20px);
           @include border-bottom-right-radius(20px);
+          box-shadow: 0 0 10px black;
         }
       }
     }
@@ -66,6 +71,19 @@
     #desktop_menu {
       display: none;
     }
+
+    #menu_dimmer {
+      display: none;
+      background-color: black;
+      opacity: 0.5;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      z-index: 998;
+    }
+
     #mobile_menu {
       position: fixed;
       left: 0;
@@ -76,7 +94,7 @@
       align-items: center;
       height: 190px;
       width: 100%;
-      z-index: 100;
+      z-index: 1000;
       @include linear-gradient(180, $dark_theme_color, transparent);
 
       #menu_left, #menu_middle, #menu_right {
@@ -124,7 +142,7 @@
       flex-direction: column-reverse;
       width: 100%;
       height: 550px;
-      z-index: 15;
+      z-index: 999;
       background-color: #001931;
 
       #drop_menu_project, #drop_menu_about, #drop_menu_shoping_cart {
@@ -147,6 +165,18 @@
       display: none;
     }
 
+    #menu_dimmer {
+      display: none;
+      background-color: black;
+      opacity: 0.5;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      z-index: 998;
+    }
+
     #mobile_menu {
       position: fixed;
       left: 0;
@@ -157,7 +187,7 @@
       align-items: center;
       height: 120px;
       width: 100%;
-      z-index: 20;
+      z-index: 1000;
       @include linear-gradient(180, #001931, transparent);
 
       #menu_left, #menu_middle, #menu_right {
@@ -204,7 +234,7 @@
       flex-direction: column-reverse;
       width: 100%;
       height: 500px;
-      z-index: 15;
+      z-index: 999;
       background-color: #001931;
 
       #drop_menu_project, #drop_menu_about, #drop_menu_shoping_cart {
@@ -231,6 +261,8 @@
         position: fixed;
         bottom: 0;
         left: 0;
+      } @else {
+        position: relative;
       }
 
       display: flex;
@@ -252,6 +284,8 @@
         position: fixed;
         bottom: 0;
         left: 0;
+      } @else {
+        position: relative;
       }
 
       display: flex;
@@ -273,6 +307,8 @@
         position: fixed;
         bottom: 0;
         left: 0;
+      } @else {
+        position: relative;
       }
 
       display: flex;
@@ -282,6 +318,7 @@
       width: 100%;
       background-color: #112437;
       height: 80px;
+      z-index: 200;
 
       p {
         color: white;

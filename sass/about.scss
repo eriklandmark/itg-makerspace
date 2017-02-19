@@ -10,10 +10,18 @@ and (-webkit-min-device-pixel-ratio: 2)
 and (orientation: portrait) {
   @include nav_bar(portrait);
   @include footer(portrait, true);
+
   body {
     padding: 0;
     margin: 0;
     background-color: $body_bg_color;
+  }
+
+  #content {
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    margin-top: 250px;
+    padding: 40px;
 
     p {
       color: $paragraph_color;
@@ -22,13 +30,6 @@ and (orientation: portrait) {
     h1, h2, h3, h4 {
       color: $text_color
     }
-  }
-
-  #content {
-    text-align: center;
-    font-family: 'Open Sans', sans-serif;
-    margin-top: 250px;
-    padding: 40px;
   }
 }
 
@@ -44,10 +45,6 @@ and (orientation: landscape) {
     padding: 0;
     margin: 0;
     background-color: $body_bg_color;
-
-    p, h1, h2, h3, h4 {
-      color: $text_color
-    }
   }
 
   #content {
@@ -55,6 +52,14 @@ and (orientation: landscape) {
     font-family: 'Open Sans', sans-serif;
     margin-top: 100px;
     padding: 20px;
+
+    p {
+      color: $paragraph_color;
+    }
+
+    h1, h2, h3, h4 {
+      color: $text_color
+    }
   }
 }
 
@@ -70,13 +75,17 @@ and (-webkit-min-device-pixel-ratio: 1) {
     background-color: $body_bg_color;
   }
 
-  p, h1, h2, h3, h4 {
-    color: $text_color
-  }
-
   #content {
     text-align: center;
     font-family: 'Open Sans', sans-serif;
     margin-top: 100px;
+
+    p {
+      color: $paragraph_color;
+    }
+
+    h1, h2, h3, h4 {
+      color: $text_color
+    }
   }
 }

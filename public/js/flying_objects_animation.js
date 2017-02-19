@@ -1,5 +1,10 @@
+window.addEventListener("load", function () {
+    var hammer = new FlyingAnimation("hammer", "left", 5, 45);
+    var nails = new FlyingAnimation("nails", "left", 10, 30);
+    var wrench = new FlyingAnimation("wrench", "right", 7, 60);
+});
 var FlyingAnimation = (function () {
-    function FlyingAnimation(element, startTime, cycleTime) {
+    function FlyingAnimation(element, side, startTime, cycleTime) {
         var _this = this;
         this.side = "left";
         this.moveRightID = null;
@@ -7,86 +12,74 @@ var FlyingAnimation = (function () {
         this.item = element;
         startTime *= 1000;
         cycleTime *= 1000;
-        setInterval(function () { return _this.interval(startTime); }, cycleTime);
+        this.side = side;
         setInterval(function () {
+            if (_this.moveRightID == null && _this.moveLeftID == null) {
+                if (_this.side == "left") {
+                    _this.moveRight();
+                }
+                else if (_this.side == "right") {
+                    _this.moveLeft();
+                }
+            }
         }, cycleTime);
-        /*window.addEventListener("resize", function () {
-            if (this.side == "right") {
+        window.addEventListener("resize", function () {
+            if (_this.side == "right") {
                 document.getElementById(element).style.left = (window.innerWidth + 20).toString() + "px";
             }
-        });*/
-        /*window.addEventListener("load", function () {
-            setTimeout(function () {
-            }, startTime);
-        });*/
-        this.moveRight();
+        });
+        setTimeout(function () {
+            if (_this.side == "left") {
+                _this.moveRight();
+            }
+            else if (_this.side == "right") {
+                _this.moveLeft();
+            }
+        }, startTime);
     }
-    FlyingAnimation.prototype.timeout = function () {
-        console.log("m " + this.moveRightID);
-        if (this.moveRightID == null && this.moveLeftID == null) {
-            if (this.side == "left") {
-                this.moveRight();
-            }
-            else if (this.side == "right") {
-                this.moveLeft();
-            }
-        }
-    };
-    FlyingAnimation.prototype.interval = function (time) {
-        var _this = this;
-        setTimeout(function () { return _this.timeout(); }, time);
-    };
     FlyingAnimation.prototype.moveRight = function () {
+        var _this = this;
         var elem = document.getElementById(this.item);
-        console.log(elem.src);
-        var rightLimit = window.innerWidth + 20;
-        var posX = -(elem.offsetHeight + 100);
+        var posX = -(elem.offsetHeight + 200);
         var speed = Math.random() + 1;
         elem.style.top = (Math.floor(Math.random() * (window.innerHeight - elem.offsetHeight - 50)) + 50).toString() + "px";
         if (this.moveLeftID != null) {
             clearInterval(this.moveLeftID);
         }
-        console.log(this.moveRightID);
-        this.moveRightID = setInterval(frame, 1000 / 120);
-        console.log(this.moveRightID);
-        function frame() {
-            if (posX >= rightLimit) {
-                this.side = "right";
-                clearInterval(2);
-                this.moveRightID = null;
-                console.log("hj");
+        this.moveRightID = setInterval(function () {
+            if (posX >= window.innerWidth + 40) {
+                _this.side = "right";
+                clearInterval(_this.moveRightID);
+                _this.moveRightID = null;
             }
             else {
                 posX += speed;
                 elem.style.left = posX + 'px';
             }
-        }
+        }, 1000 / 120);
     };
     FlyingAnimation.prototype.moveLeft = function () {
+        var _this = this;
         var elem = document.getElementById(this.item);
-        var leftLimit = -(elem.offsetHeight + 100);
-        var posX = window.innerWidth + 20;
+        var leftLimit = -(elem.offsetHeight + 200);
+        var posX = window.innerWidth + 40;
         var speed = Math.random() + 1;
         elem.style.top = (Math.floor(Math.random() * (window.innerHeight - elem.offsetHeight - 50)) + 50).toString() + "px";
         if (this.moveRightID != null) {
             clearInterval(this.moveRightID);
         }
-        this.moveLeftID = setInterval(frame, 1000 / 120);
-        function frame() {
+        this.moveLeftID = setInterval(function () {
             if (posX <= leftLimit) {
-                this.side = "left";
-                clearInterval(this.moveLeftID);
-                this.moveLeftID = null;
+                _this.side = "left";
+                clearInterval(_this.moveLeftID);
+                _this.moveLeftID = null;
             }
             else {
                 posX -= speed;
                 elem.style.left = posX + 'px';
             }
-        }
+        }, 1000 / 120);
     };
     return FlyingAnimation;
 }());
-window.addEventListener("load", function () {
-    var hammer = new FlyingAnimation("hammer", 5, 5);
-});
 //# sourceMappingURL=flying_objects_animation.js.map
