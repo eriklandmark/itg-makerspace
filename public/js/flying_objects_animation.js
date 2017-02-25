@@ -9,6 +9,7 @@ var FlyingAnimation = (function () {
         this.side = "left";
         this.moveRightID = null;
         this.moveLeftID = null;
+        this.isPaused = false;
         this.item = element;
         startTime *= 1000;
         cycleTime *= 1000;
@@ -38,47 +39,49 @@ var FlyingAnimation = (function () {
         }, startTime);
     }
     FlyingAnimation.prototype.moveRight = function () {
-        var _this = this;
         var elem = document.getElementById(this.item);
         var posX = -(elem.offsetHeight + 200);
-        var speed = Math.random() + 1;
+        var speed = Math.random() + 1.5;
         elem.style.top = (Math.floor(Math.random() * (window.innerHeight - elem.offsetHeight - 50)) + 50).toString() + "px";
         if (this.moveLeftID != null) {
-            clearInterval(this.moveLeftID);
+            window.cancelAnimationFrame(this.moveLeftID);
         }
-        this.moveRightID = setInterval(function () {
-            if (posX >= window.innerWidth + 40) {
-                _this.side = "right";
-                clearInterval(_this.moveRightID);
-                _this.moveRightID = null;
+        this.moveRightID = window.requestAnimationFrame(function () { return mr(); });
+        function mr() {
+            if (posX >= window.innerWidth - 60) {
+                this.side = "right";
+                window.cancelAnimationFrame(this.moveRightID);
+                this.moveRightID = null;
             }
             else {
                 posX += speed;
                 elem.style.left = posX + 'px';
+                window.requestAnimationFrame(mr);
             }
-        }, 1000 / 120);
+        }
     };
     FlyingAnimation.prototype.moveLeft = function () {
-        var _this = this;
         var elem = document.getElementById(this.item);
         var leftLimit = -(elem.offsetHeight + 200);
         var posX = window.innerWidth + 40;
-        var speed = Math.random() + 1;
+        var speed = Math.random() + 1.5;
         elem.style.top = (Math.floor(Math.random() * (window.innerHeight - elem.offsetHeight - 50)) + 50).toString() + "px";
         if (this.moveRightID != null) {
-            clearInterval(this.moveRightID);
+            cancelAnimationFrame(this.moveRightID);
         }
-        this.moveLeftID = setInterval(function () {
+        this.moveLeftID = window.requestAnimationFrame(function () { return ml(); });
+        function ml() {
             if (posX <= leftLimit) {
-                _this.side = "left";
-                clearInterval(_this.moveLeftID);
-                _this.moveLeftID = null;
+                this.side = "left";
+                cancelAnimationFrame(this.moveLeftID);
+                this.moveLeftID = null;
             }
             else {
                 posX -= speed;
                 elem.style.left = posX + 'px';
+                window.requestAnimationFrame(ml);
             }
-        }, 1000 / 120);
+        }
     };
     return FlyingAnimation;
 }());

@@ -10,6 +10,7 @@ class FlyingAnimation {
     moveRightID: number = null;
     moveLeftID: number = null;
     item: string;
+    isPaused: boolean = false;
 
     constructor (element: string, side: string, startTime: number, cycleTime: number) {
         this.item = element;
@@ -42,44 +43,52 @@ class FlyingAnimation {
         }, startTime);
     }
 
-    public moveRight() {
+    moveRight() {
         let elem = <HTMLImageElement> document.getElementById(this.item);
         let posX = -(elem.offsetHeight + 200);
-        let speed = Math.random() + 1;
+        let speed = Math.random() + 1.5;
         elem.style.top = (Math.floor(Math.random() * (window.innerHeight - elem.offsetHeight - 50)) + 50).toString() + "px";
         if(this.moveLeftID != null) {
-            clearInterval(this.moveLeftID);
+            window.cancelAnimationFrame(this.moveLeftID);
         }
-        this.moveRightID = setInterval(() => {
-            if (posX >= window.innerWidth + 40) {
+
+        this.moveRightID = window.requestAnimationFrame(() => mr());
+
+        function mr() {
+            if (posX >= window.innerWidth - 60) {
                 this.side = "right";
-                clearInterval(this.moveRightID);
+                window.cancelAnimationFrame(this.moveRightID);
                 this.moveRightID = null;
             } else {
                 posX += speed;
                 elem.style.left = posX + 'px';
+                window.requestAnimationFrame(mr);
             }
-        }, 1000/120);
+        }
     }
 
-    public moveLeft() {
+    moveLeft() {
         let elem = <HTMLImageElement> document.getElementById(this.item);
         let leftLimit = -(elem.offsetHeight + 200);
         let posX = window.innerWidth + 40;
-        let speed = Math.random() + 1;
+        let speed = Math.random() + 1.5;
         elem.style.top = (Math.floor(Math.random() * (window.innerHeight - elem.offsetHeight - 50)) + 50).toString() + "px";
         if(this.moveRightID != null) {
-            clearInterval(this.moveRightID);
+            cancelAnimationFrame(this.moveRightID);
         }
-        this.moveLeftID = setInterval(() => {
+
+        this.moveLeftID = window.requestAnimationFrame(() => ml());
+
+        function ml() {
             if (posX <= leftLimit) {
                 this.side = "left";
-                clearInterval(this.moveLeftID);
+                cancelAnimationFrame(this.moveLeftID);
                 this.moveLeftID = null;
             } else {
                 posX -= speed;
                 elem.style.left = posX + 'px';
+                window.requestAnimationFrame(ml);
             }
-        }, 1000/120);
+        }
     }
 }

@@ -2,7 +2,6 @@ class App < Sinatra::Base
 
   enable :sessions
   set :session_secret, 'itg-makerspace'
-  set :static_cache_control, [:public, max_age: 0]
 
   get '/projects' do
     erb :projects
@@ -17,7 +16,6 @@ class App < Sinatra::Base
   end
 
   get '/*' do
-    cache_control :public, max_age: 0
     erb :index
   end
 end
